@@ -1,6 +1,4 @@
-import re
-
-class Task:
+class Task1:
 
     @staticmethod
     def read_file(file_path):
