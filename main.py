@@ -8,4 +8,6 @@ if __name__ == '__main__':
     # Day_1().execute1a()
 
     # Day 2
-    Day_2().execute()
+    # Day_2().execute1()
+    Day_2().execute1a()
+

@@ -32,8 +32,25 @@ class Game:
 
         return True
 
+    def get_power(self):
+        blue = 0
+        green = 0
+        red = 0
+        for round in self.rounds:
+            for color_count in round.color_counts:
+                if color_count.color == 'red':
+                    red = max(red, color_count.count)
+
+                if color_count.color == 'green':
+                    green = max(green, color_count.count)
+
+                if color_count.color == 'blue':
+                    blue = max(blue, color_count.count)
+
+        return blue * green * red
+
 class Day_2:
-    def execute(self):
+    def execute1(self):
         print("Day 2")
         data = Utils.read_file('day2.txt')
         games = []
@@ -45,6 +62,22 @@ class Day_2:
         game_ids = [Day_2.extract_game_id(game) for game in correct_games]
         sum_value = sum(int(i) for i in game_ids)
         print(sum_value)
+
+    def execute1a(self):
+        print("Day 21a")
+        data = Utils.read_file('day2.txt')
+        games = []
+        for game_string in data:
+            game = Day_2.parse_game_string(game_string)
+            games.append(game)
+        print(games)
+        powers = map(Day_2.get_power, games)
+        print(powers)
+        sum_value = sum(int(i) for i in powers)
+        print(sum_value)
+
+    def get_power(game):
+        return game.get_power()
 
     def extract_game_id(game):
         return game.game_number
