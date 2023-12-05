@@ -1,10 +1,25 @@
-class Task1:
+from utils import Utils
+class Day_1:
 
-    @staticmethod
-    def read_file(file_path):
-        with open(file_path, 'r') as file:
-            data = [line.strip() for line in file.readlines()]
-        return data
+    def execute1(self):
+        print("Day 1")
+        data = Utils.read_file('day1.txt')
+        print(data)
+        processed_data = list(map(Day_1.get_int_chars, data))
+        print(processed_data)
+        next_data = list(map(Day_1.get_first_and_last, processed_data))
+        print(next_data)
+        sum_of_ints = sum(int(i) for i in next_data if i.isdigit())
+        print(sum_of_ints)
+
+    def execute1a(self):
+        print("Day 1a")
+        data = Utils.read_file('day1.txt')
+        print(data)
+        numbers_data = list(map(Day_1.get_int, data))
+        print(numbers_data)
+        sum_of_ints = sum(int(i) for i in numbers_data)
+        print(sum_of_ints)
 
     @staticmethod
     def get_int_chars(s):
@@ -88,29 +103,4 @@ class Task1:
                 first_int = int(s[i])
 
         return int(str(first_int) + str(last_int))
-
-    class Day1:
-
-        def execute(self):
-            print("Day 1")
-            data = Task.read_file('day1.txt')
-            print(data)
-            processed_data = list(map(Task.get_int_chars, data))
-            print(processed_data)
-            next_data = list(map(Task.get_first_and_last, processed_data))
-            print(next_data)
-            sum_of_ints = sum(int(i) for i in next_data if i.isdigit())
-            print(sum_of_ints)
-
-    class Day1a:
-
-        def execute(self):
-            print("Day 1a")
-            data = Task.read_file('day1.txt')
-            print(data)
-            numbers_data = list(map(Task.get_int, data))
-            print(numbers_data)
-            sum_of_ints = sum(int(i) for i in numbers_data)
-            print(sum_of_ints)
-
 
